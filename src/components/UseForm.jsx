@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const useForm = ({ onSubmit, user }) => {
+const UseForm = ({ onSubmit, user }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -48,4 +48,4 @@ const useForm = ({ onSubmit, user }) => {
       );
     };
     
-    export default useForm;
+    export default UseForm;
