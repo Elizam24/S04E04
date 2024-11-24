@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import useApi from './hook/useApi';
 import UseCard from './components/UseCard';
-import UseForm  from'./components/UseForm';
+import UseForm from './components/UseForm';
 const App = () => {
   const { data, createUser , updateUser , deleteUser  } = useApi();
   const [editingUser ,setEditingUser ] = useState(null);

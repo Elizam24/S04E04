@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import './UseForm.css'; // Asegúrate de que la ruta sea correcta
 
 const UseForm = ({ onSubmit, user }) => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    first_name: '',
-    last_name: '',
-    birthday: '',
+    correo: '',
+    contrasena: '',
+    Primer_Nombre: '',
+    Segundo_Nombre: '',
+    Cumpleanos: '',
     
   });
 
@@ -15,11 +16,11 @@ const UseForm = ({ onSubmit, user }) => {
       setFormData(user);
     } else {
       setFormData({
-        email: '',
-        password: '',
-        first_name: '',
-        last_name: '',
-        birthday: '',
+        Correo: '',
+        contrasena: '',
+        Primer_Nombre: '',
+        Segundo_Nombre: '',
+        Cumpleanos: '',
         
       });
     }
