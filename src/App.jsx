@@ -1,41 +1,54 @@
-// src/App.js
+// App.js
 import React, { useState } from 'react';
-import useApi from './hook/useApi';
-import UseCard from './components/UseCard';
-import UseForm from './components/UseForm';
-const App = () => {
-  const { data, createUser , updateUser , deleteUser  } = useApi();
-  const [editingUser ,setEditingUser ] = useState(null);
+import './App.css';
+import UserForm from './components/UserForm';
+import UserList from './components/UserList';
 
-  const users = data.data
+function App() {
+  const [users, setUsers] = useState([]); // Lista de usuarios
+  const [formData, setFormData] = useState({ id: null, name: '', email: '' }); // Datos del formulario
+  const [editing, setEditing] = useState(false); // Indica si estamos editando
 
-  const handleCreateOrUpdate = (user) => {
-    if (editingUser ) {
-      updateUser (editingUser .id, user);
-      setEditingUser (null);
-    } else {
-      createUser (user);
+  // Agregar un nuevo usuario
+  const addUser = () => {
+    if (formData.name && formData.email) {
+      const newUser = { id: Date.now(), name: formData.name, email: formData.email };
+      setUsers([...users, newUser]);
+      setFormData({ id: null, name: '', email: '' });
     }
+  };
+
+  // Editar un usuario existente
+  const editUser = (user) => {
+    setEditing(true);
+    setFormData(user);
+  };
+
+  // Actualizar un usuario existente
+  const updateUser = () => {
+    setUsers(users.map((user) => (user.id === formData.id ? formData : user)));
+    setEditing(false);
+    setFormData({ id: null, name: '', email: '' });
+  };
+
+  // Eliminar un usuario
+  const deleteUser = (id) => {
+    setUsers(users.filter((user) => user.id !== id));
   };
 
   return (
     <div className="App">
-      <h2>Usuario</h2>
-      <UseForm onSubmit={handleCreateOrUpdate} user={editingUser } />
-      <div className="user-list">
-        {users && (<>
-          {users.map(user => (
-            <UseCard 
-              key={user.id} 
-              user={user} 
-              onDelete={deleteUser } 
-              onEdit={setEditingUser } 
-            />
-          ))}
-        </>)}
-      </div>
+      <h1>CRUD </h1>
+      <UserForm
+        formData={formData}
+        setFormData={setFormData}
+        addUser={addUser}
+        updateUser={updateUser}
+        editing={editing}
+      />
+      <UserList users={users} editUser={editUser} deleteUser={deleteUser} />
     </div>
   );
-};
+}
 
 export default App;

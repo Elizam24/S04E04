@@ -1,0 +1,17 @@
+
+.form-container {
+  margin-bottom: 30px;
+}
+
+.form-container input {
+  margin: 5px;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.form-container button {
+  padding: 8px 12px;
+  font-size: 16px;
+  margin-left: 5px;
+  cursor: pointer;
+}
