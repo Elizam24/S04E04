@@ -1,0 +1,43 @@
+/* components/userList.css */
+.user-list {
+    display: flex;
+    flex-direction:row ;
+    align-items: center;
+  }
+  
+  .user-list-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .user-list-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre las tarjetas */
+  }
+  
+  .user-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+ 
+  .user-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .user-button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .user-button:hover {
+    background-color: #f0f0f0;
+  }

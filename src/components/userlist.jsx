@@ -1,23 +1,25 @@
-
+// components/UserList.js
 import React from 'react';
 import './userList.css';
+import UserCard from './userCard'; // Asegúrate de importar el nuevo componente
 
-function UserList({ users, editUser, deleteUser }) {
+function UserList({ users, editUser , deleteUser  }) {
   return (
     <div className="user-list">
-      <h2>Lista de Usuarios</h2>
+      <h2 className="user-list-title">Lista de Usuarios</h2>
       {users.length > 0 ? (
-        <ul>
+        <div className="user-list-items">
           {users.map((user) => (
-            <li key={user.id}>
-              <span>{user.name} ({user.email})</span>
-              <button onClick={() => editUser(user)}>Editar</button>
-              <button onClick={() => deleteUser(user.id)}>Eliminar</button>
-            </li>
+            <UserCard 
+              key={user.id} 
+              user={user} 
+              onDelete={deleteUser } 
+              onUpdate={editUser } 
+            />
           ))}
-        </ul>
+        </div>
       ) : (
-        <p>No hay usuarios disponibles.</p>
+        <p className="no-users-message">No hay usuarios disponibles.</p>
       )}
     </div>
   );
